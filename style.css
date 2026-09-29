@@ -1,0 +1,116 @@
+/* EDIT: change these colours to restyle the whole site */
+:root {
+  --bg: #eef1f6;
+  --ink: #101828;
+  --muted: #4a5568;
+  --accent: #1f4fff;
+  --accent-ink: #ffffff;
+  --line: #c9d1dd;
+  --display: "Bricolage Grotesque", "Segoe UI", Arial, sans-serif;
+  --body: "Instrument Sans", "Segoe UI", Arial, sans-serif;
+}
+
+/* Dark theme: follows the device setting, or the Theme button */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1320; --ink: #e8ecf5; --muted: #9aa6bd;
+    --accent: #7c9bff; --accent-ink: #0e1320; --line: #2a3350;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1320; --ink: #e8ecf5; --muted: #9aa6bd;
+  --accent: #7c9bff; --accent-ink: #0e1320; --line: #2a3350;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+a { color: var(--accent); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+.site-header, main, .site-footer {
+  width: min(100% - 2.5rem, 46rem);
+  margin-inline: auto;
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.brand { font-family: var(--display); font-weight: 800; color: var(--ink); text-decoration: none; }
+nav { display: flex; flex-wrap: wrap; align-items: center; gap: 1.1rem; }
+nav a { color: var(--ink); text-decoration: none; }
+nav a:hover { color: var(--accent); }
+#theme-toggle {
+  font: inherit; color: var(--ink); background: none; cursor: pointer;
+  border: 1px solid var(--line); border-radius: 999px; padding: 0.2rem 0.8rem;
+}
+#theme-toggle:hover { border-color: var(--accent); }
+
+/* Hero */
+.hero { padding: 5rem 0 4rem; }
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(3rem, 12vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.25rem;
+  padding-left: 1rem;
+  border-left: 0.5rem solid var(--accent);
+}
+.lead { font-size: 1.3rem; max-width: 34rem; color: var(--muted); margin: 0 0 2rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.btn {
+  display: inline-block; padding: 0.7rem 1.3rem; border-radius: 6px;
+  border: 2px solid var(--ink); color: var(--ink); text-decoration: none; font-weight: 600;
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn:hover { transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) { .btn:hover { transform: none; } }
+
+/* Sections */
+.section { padding: 3rem 0; border-top: 1px solid var(--line); }
+.section h2 { font-family: var(--display); font-size: 1.8rem; margin: 0 0 1.25rem; }
+
+/* Filters */
+.filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+.filter {
+  font: inherit; color: var(--ink); background: none; cursor: pointer;
+  border: 1px solid var(--line); border-radius: 999px; padding: 0.3rem 1rem;
+}
+.filter:hover { border-color: var(--accent); }
+.filter.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+/* Projects: a simple list, one row per project */
+.project { padding: 1.25rem 0; border-top: 1px solid var(--line); }
+.project h3 { font-family: var(--display); font-size: 1.3rem; margin: 0 0 0.25rem; }
+.project p { margin: 0 0 0.35rem; max-width: 36rem; }
+.project .meta { color: var(--muted); font-size: 0.95rem; }
+.project[hidden] { display: none; }
+.empty { color: var(--muted); }
+
+/* About and contact */
+.skills { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; padding: 0; margin: 1.25rem 0 0; }
+.skills li { border: 1px solid var(--line); border-radius: 6px; padding: 0.25rem 0.8rem; }
+.links { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+
+/* Footer */
+.site-footer { padding: 2rem 0 3rem; border-top: 1px solid var(--line); color: var(--muted); }
+.site-footer p { margin: 0; }
